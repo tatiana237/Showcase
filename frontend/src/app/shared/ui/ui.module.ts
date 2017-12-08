@@ -14,6 +14,7 @@ import {
     MenubarModule,
     PanelModule,
     TabViewModule,
+    FieldsetModule
 } from "primeng/primeng";
 
 @NgModule({

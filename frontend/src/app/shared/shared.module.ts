@@ -5,6 +5,10 @@ import {ErrorModule} from "./error/error.module";
 import {RestModule} from "./http/rest.module";
 import {TranslationModule} from "./translation/translation.module";
 import {UIModule} from "./ui/ui.module";
+import {TaskListModule} from "../shipment/task-list/task-list.module";
+import {EnabledTaskListComponent} from "../shipment/enabled-task-list/presentationals/enabled-task-list.component";
+import {EnabledTaskListModel} from "../shipment/enabled-task-list/container/enabled-task-list-page.model";
+import {EnabledTaskListModule} from "../shipment/enabled-task-list/enabled-task-list.module";
 
 @NgModule({
     exports: [
@@ -14,7 +18,7 @@ import {UIModule} from "./ui/ui.module";
         ErrorModule,
         RestModule,
         TranslationModule,
-        UIModule
+        UIModule,
     ]
 })
 export class SharedModule {

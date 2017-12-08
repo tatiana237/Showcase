@@ -1,12 +1,12 @@
 import {Component, Input, Output, EventEmitter} from "@angular/core";
-import {TaskResource} from "../../../shipment/shipment-common/api/resources/task.resource";
 import {TaskListRowModel} from "../container/task-list-page.model";
+import {TaskResource} from "../../shipment-common/api/resources/task.resource";
 
 @Component({
-    selector: "educama-task-list",
-    templateUrl: "./task-list.component.html"
+    selector: "educama-caseui-task-list",
+    templateUrl: "./caseUI-task-list.component.html"
 })
-export class TaskListComponent {
+export class CaseUITaskListComponent {
 
     @Input()
     public taskList: TaskListRowModel[];

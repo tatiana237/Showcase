@@ -1,0 +1,28 @@
+<p-fieldset legend="{{'SHIPMENT-CAPTURE-COMPONENT_TITLE'|translate}}">
+  <div>
+    <div style="float: left; width: 40%">
+      <div>
+        <h4>{{'SHIPMENT-RESOURCE_TRACKING-ID'|translate}}</h4></div>
+      <div>
+        <label>{{shipment?.trackingId}}</label>
+      </div>
+    </div>
+    <div style="float: none; width: 30%;display: inline-block">
+      <div>
+        <h4>{{'SHIPMENT-RESOURCE_SENDER'|translate}}</h4>
+      </div>
+      <div>
+        <label>{{shipment?.sender.name}}</label>
+      </div>
+    </div>
+    <div style="float: right; width: 30%">
+      <div>
+        <div>
+          <h4>{{'SHIPMENT-RESOURCE_RECEIVER' | translate}}</h4>
+        </div>
+        <div>
+          <label>{{shipment?.receiver.name}}</label></div>
+      </div>
+    </div>
+  </div>
+</p-fieldset>

@@ -13,6 +13,7 @@
   "AIRPORT-RESOURCE_ICAOCODE": "ICAO Code",
   "AIRPORT-RESOURCE_LONGITUDE": "Längengrad",
   "AIRPORT-RESOURCE_LATITUDE": "Breitengrad",
+  "CASEUI_TITLE": "CASE UI",
   "CUSTOMER-RESOURCE": "Kunde",
   "CUSTOMER-RESOURCE_ADDRESS": "Anschrift",
   "CUSTOMER-RESOURCE_ADDRESS-CITY": "Stadt",
@@ -42,6 +43,7 @@
   "SHIPMENT-LIST-COMPONENT_TITLE": "Liste der Transportaufträge",
   "SHIPMENT-CAPTURE-COMPONENT_TITLE-CREATE": "Transportauftrag anlegen",
   "SHIPMENT-CAPTURE-COMPONENT_TITLE-UPDATE": "Transportauftrag ändern",
+  "SHIPMENT-CAPTURE-COMPONENT_TITLE": "Transportinformationen",
   "SHIPMENT_CAPTURE_COMPONENT-PANEL_SENDER_RECEIVER_ADDRESS": "Absender- und Empfängeradressen",
   "SHIPMENT_CAPTURE_COMPONENT_CARGO-INFORMATION": "Frachtgutinformationen",
   "SHIPMENT_CAPTURE_COMPONENT_SERVICES": "Dienstleistungen",
@@ -73,5 +75,7 @@
   "TASK-RESOURCE_TASK-NAME": "Taskname",
   "TASK-RESOURCE_DESCRIPTION": "Beschreibung",
   "TASK-RESOURCE_ASSIGNEE": "Zugewiesen an",
-  "TASK-LIST-PAGE-COMPONENT-TITLE": "Alle Aufgaben"
+  "TASK-LIST-PAGE-COMPONENT-TITLE": "Alle Aufgaben",
+  "ACTIVE-TASK-LIST-TITLE": "Aktive Aufgaben",
+  "ENABLED-TASK-LIST-TITLE": "Aktivierbare Aufgaben"
 }

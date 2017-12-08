@@ -10,7 +10,7 @@ import {RequestTasksFailedAction, RequestTasksSuccessfulAction} from "../store/t
 
 @Injectable()
 export class TaskListEffect {
-
+    private id: string;
     constructor(private _actions: Actions,
                 private _taskService: TaskService,
                 private _store: Store<State>) {
@@ -24,5 +24,15 @@ export class TaskListEffect {
         })
         .map(taskListSlice => new RequestTasksSuccessfulAction(taskListSlice))
         .catch(() => Observable.of(new RequestTasksFailedAction()));
+
+  @Effect() loadTasksForShipment = this._actions
+    .ofType(actions.REQUEST_TASKS_FOR_SHIPMENT)
+    .map((action: actions.RequestTasksForShipmentAction) => this.id = action.trackingId)
+    .withLatestFrom(this._store, (action, state) => state.taskListSlice)
+    .switchMap((taskListSlice: TaskListSlice) => {
+      return this._taskService.findTasksForShipment(this.id);
+    })
+    .map(taskListSlice => new RequestTasksSuccessfulAction(taskListSlice))
+    .catch(() => Observable.of(new RequestTasksFailedAction()));
 
 }

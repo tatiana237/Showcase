@@ -1,0 +1,10 @@
+<p-dataTable
+  id="task-list-component_enabledTask-table"
+  [value]="enabledTaskList"
+  selectionMode="single"
+  [(selection)]="selectedEnabledTask"
+  (onRowSelect)="onRowSelect($event)">
+  <p-column field="trackingId" header="{{'TASK-RESOURCE_INSTANCE_ID' | translate}}"></p-column>
+  <p-column field="name" header="{{'TASK-RESOURCE_TASK-NAME' | translate}}"></p-column>
+  <p-column field="description" header="{{'TASK-RESOURCE_DESCRIPTION' | translate}}"></p-column>
+</p-dataTable>

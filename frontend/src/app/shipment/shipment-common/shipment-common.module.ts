@@ -5,12 +5,14 @@ import {TaskService} from "./api/task.service";
 import {EffectsModule} from "@ngrx/effects";
 import {ShipmentListEffect} from "./effects/shipment-list.effect";
 import {TaskListEffect} from "./effects/task-list.effect";
+import {EnabledTaskListEffect} from "./effects/enabled-task-list.effect";
 
 @NgModule({
   imports: [
     EffectsModule.forFeature([
       ShipmentListEffect,
-      TaskListEffect
+      TaskListEffect,
+      EnabledTaskListEffect
     ]),
     SharedModule,
   ],
