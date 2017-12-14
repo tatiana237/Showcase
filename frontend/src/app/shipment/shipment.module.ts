@@ -5,6 +5,7 @@ import {TaskListModule} from "./task-list/task-list.module";
 import {ShipmentCommonModule} from "./shipment-common/shipment-common.module";
 import {ShipmentRoutingModule} from "./shipment-routing/shipment-routing.module";
 import {EnabledTaskListModule} from "./enabled-task-list/enabled-task-list.module";
+import {TerminedTaskListModule} from "./Termined-Task_list/termined-task-list.module";
 
 @NgModule({
     imports: [
@@ -13,7 +14,9 @@ import {EnabledTaskListModule} from "./enabled-task-list/enabled-task-list.modul
       ShipmentListModule,
       ShipmentRoutingModule,
       TaskListModule,
-      EnabledTaskListModule
+      EnabledTaskListModule,
+      TerminedTaskListModule
+
     ]
 })
 export class ShipmentModule {
