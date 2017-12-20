@@ -10,6 +10,7 @@ import {
   RequestTasksAction, RequestTasksForShipmentAction
 } from "../../shipment-common/store/tasks/task-list-page.actions";
 import {TerminedTaskListModel, TerminedTaskListRowModel} from "./termined-task-list-page.model";
+import {TerminedTaskListSlice} from "../../shipment-common/store/Termined-tasks/termined-task-list-page.slice";
 
 
 
@@ -20,19 +21,20 @@ import {TerminedTaskListModel, TerminedTaskListRowModel} from "./termined-task-l
 export class terminedTaskListPageComponent implements OnInit, OnDestroy {
 
 // relevant slice of store and subscription for this slice
-  public taskListSlice: Observable<TaskListSlice>;
+  public terminedTaskListSlice: Observable<TerminedTaskListSlice>;
   public taskListSliceSubscription: Subscription;
 
   // model for the page
   public TerminedTaskListModel: TerminedTaskListModel = new TerminedTaskListModel();
 
+
   constructor(private _router: Router,
               private _store: Store<State>,
               private  _activatedRoute: ActivatedRoute) {
 
-    this.taskListSlice = this._store.select(state => state.taskListSlice);
-    this.taskListSliceSubscription = this.taskListSlice
-      .subscribe(taskListSlice => this.updateTaskListModel(taskListSlice));
+    this.terminedTaskListSlice = this._store.select(state => state.terminedTaskListSlice);
+    this.taskListSliceSubscription = this.terminedTaskListSlice
+      .subscribe(terminedTaskListSlice => this.updateTerminedTaskListModel(terminedTaskListSlice));
   }
 
   public ngOnInit() {
@@ -50,7 +52,7 @@ export class terminedTaskListPageComponent implements OnInit, OnDestroy {
 
   // ***************************************************
   // Event Handler
-  // ***************************************************
+  // **************************************************
 
   public onTaskSelectedEvent(trackingId: string) {
     this._router.navigate(["/shipments/edit/" + trackingId]);
@@ -58,11 +60,12 @@ export class terminedTaskListPageComponent implements OnInit, OnDestroy {
 
   // ***************************************************
   // Data Retrieval
-  // ***************************************************
 
-  private updateTaskListModel(taskListSlice: TaskListSlice) {
+
+
+  private updateTerminedTaskListModel(terminedTaskListSlice: TerminedTaskListSlice) {
     this.TerminedTaskListModel.TerminedTaskList =
-      taskListSlice.taskList.map(
+      terminedTaskListSlice.taskList.map(
         taskResource => new TerminedTaskListRowModel(
           taskResource.createTime,
           taskResource.trackingId,
