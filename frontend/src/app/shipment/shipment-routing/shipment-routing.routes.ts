@@ -30,7 +30,7 @@ export const SHIPMENT_ROUTES: Routes = [
         component: CaseUiComponent,
             children: [
               { path: "changeShipment", component: ShipmentCapturePageComponent },
-              { path: "completeShipment", component: ShipmentCapturePageComponent }
+              { path: "completeShipment", component: ShipmentCapturePageComponent}
             ]
     },
     {

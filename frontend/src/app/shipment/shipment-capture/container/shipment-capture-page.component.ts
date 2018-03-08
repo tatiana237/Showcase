@@ -14,8 +14,6 @@ import {RequestCompletedTaskForShipmentAction} from "../../shipment-common/store
 import {ShipmentCaptureSlice} from "../../shipment-common/store/shipments/shipment-capture-page/shipment-capture-page.slice";
 import {RequestSingleShipment} from "../../shipment-common/store/shipments/shipment-list-page/shipment-list-page.actions";
 import {ResetShipmentCaptureSliceAction} from "../../shipment-common/store/shipments/shipment-capture-page/shipment-capture-page.actions";
-import {OrganizeFlightResource} from "../../shipment-common/api/resources/organize-flight.resource";
-
 @Component({
   selector: "educama-shipment-capture-page",
   templateUrl: "./shipment-capture-page.component.html",
@@ -107,12 +105,7 @@ export class ShipmentCapturePageComponent implements OnInit, OnDestroy {
     shipment.shipmentCargo = saveShipmentEvent.shipmentCargo;
     shipment.shipmentServices = saveShipmentEvent.shipmentServices;
     shipment.trackingId = saveShipmentEvent.trackingId;
-    if (_.isUndefined(shipment.shipmentFlight )) {
-      shipment.shipmentFlight = new OrganizeFlightResource("", "", 0, "", "2016-12-31T00:00:00Z", "", "2016-12-31T00:00:00Z");
-      return shipment;
-    } else {
-      return shipment;
-    }
+    return shipment;
   }
 
 }

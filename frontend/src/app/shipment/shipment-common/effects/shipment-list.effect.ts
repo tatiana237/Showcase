@@ -3,11 +3,12 @@ import {Actions, Effect} from "@ngrx/effects";
 import {ShipmentService} from "../api/shipment.service";
 import {Store} from "@ngrx/store";
 import {State} from "../../../app.reducers";
-import * as actions from "../store/shipments/shipment-list-page.actions";
-import {ShipmentListSlice} from "../store/shipments/shipment-list-page.slice";
-import {RequestShipmentsFailedAction, RequestShipmentsSuccessfulAction} from "../store/shipments/shipment-list-page.actions";
+import * as actions from "../store/shipments/shipment-list-page/shipment-list-page.actions";
+import {ShipmentListSlice} from "../store/shipments/shipment-list-page/shipment-list-page.slice";
+import {RequestShipmentsFailedAction, RequestShipmentsSuccessfulAction
+} from "../store/shipments/shipment-list-page/shipment-list-page.actions";
 import {Observable} from "rxjs/Observable";
-import {LoadShipmentSuccessfullAction} from "../store/shipments/shipment-capture-page.actions";
+import {LoadShipmentSuccessfullAction} from "../store/shipments/shipment-capture-page/shipment-capture-page.actions";
 
 @Injectable()
 export class ShipmentListEffect {
