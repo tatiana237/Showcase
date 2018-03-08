@@ -6,6 +6,7 @@ import "rxjs/add/operator/map";
 import "rxjs/add/observable/throw";
 import {ShipmentListResource} from "./resources/shipment-list.resource";
 import {ShipmentResource} from "./resources/shipment.resource";
+import {OrganizeFlightResource} from "./resources/organize-flight.resource";
 
 /*
  * Service to communicate with Shipments Resource
@@ -51,5 +52,14 @@ export class ShipmentService {
      */
     public findShipmentbyId(trackingid: string): Observable<ShipmentResource> {
         return this._restClientService.get(this.SHIPMENT_RESOURCE_PATH + "/" + trackingid);
+    }
+
+    /*
+     *  Add flight to existing shipment
+     *  @param trackingId of shipment and flight to add
+     *  @return Observable of updated shipment
+     */
+    public addFlightToShipment(trackingId: string, flight: OrganizeFlightResource): Observable<ShipmentResource> {
+      return this._restClientService.put(this.SHIPMENT_RESOURCE_PATH + "/flight/add/" + trackingId, JSON.stringify(flight));
     }
 }
