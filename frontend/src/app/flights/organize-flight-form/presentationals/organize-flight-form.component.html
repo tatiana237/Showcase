@@ -12,7 +12,13 @@
         <label>Fluggesellschaft:</label>
       </div>
       <div class="ui-g-12 ui-md-10">
-        <input type="text" pInputText>
+        <p-autoComplete placeholder="Airline"
+                        field="name"
+                        [(ngModel)]="selectedAirline"
+                        [suggestions]="airlineSuggestion"
+                        (completeMethod)="loadAirlineSuggestions($event)"
+                        (onSelect)="onAirlineSelected($event)"
+        ></p-autoComplete>
       </div>
       <div class="ui-g-12 ui-md-2">
         <label>Preis:</label>
@@ -34,10 +40,15 @@
             <input type="text" pInputText>
           </div>
           <div class="ui-g-12 ui-md-3">
-            <label>Kürzel:</label>
+            <label>Stadt:</label>
           </div>
           <div class="ui-g-12 ui-md-9">
-            <input type="text" pInputText>
+            <p-autoComplete placeholder="Airport"
+                            field="city"
+                            [suggestions]="airportSuggestion"
+                            (completeMethod)="loadAirportSuggestions($event)"
+                            (onSelect)="onStartAirportSelected($event)"
+            ></p-autoComplete>
           </div>
           <div class="ui-g-12 ui-md-3">
             <label>Datum:</label>
@@ -69,10 +80,15 @@
             <input type="text" pInputText>
           </div>
           <div class="ui-g-12 ui-md-3">
-            <label>Kürzel:</label>
+            <label>Stadt:</label>
           </div>
           <div class="ui-g-12 ui-md-9">
-            <input type="text" pInputText>
+            <p-autoComplete placeholder="Airport"
+                            field="city"
+                            [suggestions]="airportSuggestion"
+                            (completeMethod)="loadAirportSuggestions($event)"
+                            (onSelect)="onDestinationAirportSelected($event)"
+            ></p-autoComplete>
           </div>
           <div class="ui-g-12 ui-md-3">
             <label>Datum:</label>
