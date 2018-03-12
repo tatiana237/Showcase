@@ -11,5 +11,5 @@ export class ShipmentResource {
     public customerTypeEnum: string;
     public shipmentCargo: Cargo;
     public shipmentServices: ShipmentServices;
-    public flight: OrganizeFlightResource;
+    public shipmentFlight: OrganizeFlightResource;
 }

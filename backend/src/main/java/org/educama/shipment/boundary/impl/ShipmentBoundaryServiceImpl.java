@@ -101,11 +101,8 @@ public class ShipmentBoundaryServiceImpl implements ShipmentBoundaryService {
             shipment.shipmentFlight = saveFlightResource;
             shipment = shipmentRepository.saveAndFlush(shipment);
 
-            if (organizeFlightTask.isActive(trackingId) && organizeFlightTask.canBeCompleted(trackingId)) {
                 organizeFlightTask.complete(trackingId);
                 shipmentCaseEvaluator.reevaluateCase(trackingId);
-            }
-
             ShipmentResource convertedShipment = new ShipmentResource().fromShipment(shipment);
             return convertedShipment;
         }

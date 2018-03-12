@@ -51,6 +51,7 @@ export class EnabledTaskListPageComponent implements OnInit, OnDestroy {
 
   public onTaskSelectedEvent(taskResource: TaskResource) {
     this._store.dispatch(new StartEnabledTaskAction(taskResource.trackingId, taskResource.name));
+
   }
 
   // ***************************************************

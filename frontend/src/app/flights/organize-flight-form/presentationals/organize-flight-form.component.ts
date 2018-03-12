@@ -1,22 +1,20 @@
-
-
-import {Component, OnDestroy, OnInit} from "@angular/core";
-import {AirlineResource} from "../../flights-common/api/airlines/airline.resource";
-import {AirportResource} from "../../flights-common/api/airports/airport.resource";
+import {Component, Input, OnDestroy, OnInit} from "@angular/core";
 import {Observable} from "rxjs/Observable";
-import {ShipmentCaptureSlice} from "../../../shipment/shipment-common/store/shipments/shipment-capture-page/shipment-capture-page.slice";
 import {Subscription} from "rxjs/Subscription";
-import {ActivatedRoute} from "@angular/router";
-import {ShipmentService} from "../../../shipment/shipment-common/api/shipment.service";
-import {Store} from "@ngrx/store";
-import {State} from "../../../app.reducers";
+import {AirportResource} from "../../flights-common/api/airports/airport.resource";
+import {AirlineResource} from "../../flights-common/api/airlines/airline.resource";
+import {OrganizeFlightFormPageModel} from "../container/organize-flight-form-page.model";
+import {ActivatedRoute, Router} from "@angular/router";
+import { Store} from "@ngrx/store";
 import {AirlineService} from "../../flights-common/api/airlines/airline.service";
 import {AirportService} from "../../flights-common/api/airports/airport.service";
-import {
-  LoadShipmentAction,
-  ResetShipmentCaptureSliceAction
+import {State} from "../../../app.reducers";
+import {RequestSingleShipment} from "../../../shipment/shipment-common/store/shipments/shipment-list-page/shipment-list-page.actions";
+import {ResetShipmentCaptureSliceAction
 } from "../../../shipment/shipment-common/store/shipments/shipment-capture-page/shipment-capture-page.actions";
-import {OrganizeFlightFormPageModel} from "../container/organize-flight-form-page.model";
+import {SaveFlightAction} from "../../../shipment/shipment-common/store/shipments/organize-flight-page/organize-flight-page.actions";
+import {OrganizeFlightResource} from "../../../shipment/shipment-common/api/resources/organize-flight.resource";
+import {OrganizeFlightSlice} from "../../../shipment/shipment-common/store/shipments/organize-flight-page/organize-flight-page.slice";
 
 @Component({
   selector: "educama-organize-flight-form",
@@ -25,6 +23,8 @@ import {OrganizeFlightFormPageModel} from "../container/organize-flight-form-pag
 })
 export class OrganizeFlightFormComponent implements OnInit, OnDestroy {
 
+  private trackingId: string;
+  value: Date;
   public airlineSuggestion: any;
   public airportSuggestion: any;
 
@@ -33,19 +33,28 @@ export class OrganizeFlightFormComponent implements OnInit, OnDestroy {
   selectedDestinationAirport: AirportResource;
 
 
-  public shipmentDetailSlice: Observable<ShipmentCaptureSlice>;
+  public flightNumber: string;
+  public price: number;
+
+  public departureAirport: string;
+  public departureDate: string;
+  public destinationAirport: string;
+  public destinationDate: string;
+
+
+  public shipmentDetailSlice: Observable<OrganizeFlightSlice>;
   public shipmentDetailSliceSubscription: Subscription;
 
   // model for the page
   public shipmentDetailInfoModel: OrganizeFlightFormPageModel = new OrganizeFlightFormPageModel();
 
-  constructor(private _activatedRoute: ActivatedRoute,
-              private _shipmentService: ShipmentService,
+  constructor(private _router: Router,
+              private _activatedRoute: ActivatedRoute,
               private _store: Store<State>,
               private _airlineService: AirlineService,
               private _airportService: AirportService) {
 
-    this.shipmentDetailSlice = this._store.select(state => state.shipmentCaptureSlice);
+    this.shipmentDetailSlice = this._store.select(state => state.organizeFlightPageSlice);
 
     this.shipmentDetailSliceSubscription = this.shipmentDetailSlice.subscribe(
       shipmentCaptureSlice => this.updateShipmentCaptureModel(shipmentCaptureSlice)
@@ -53,17 +62,30 @@ export class OrganizeFlightFormComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit() {
-    this._activatedRoute.params.subscribe(params => {
-      if (params["id"] && params["id"] !== "capture") {
-        this.loadShipment(params["id"]);
-      }
-      console.log(params["id"]);
+    this._activatedRoute.parent.params.subscribe(params => {
+      this.trackingId = params["id"];
+      this._store.dispatch(new RequestSingleShipment(params["id"]));
     });
   }
 
   public ngOnDestroy() {
     this._store.dispatch(new ResetShipmentCaptureSliceAction(""));
     this.shipmentDetailSliceSubscription.unsubscribe();
+  }
+
+
+  public saveFlight() {
+    this._store.dispatch(new SaveFlightAction(this.trackingId, new OrganizeFlightResource(
+      this.flightNumber, this.selectedAirline.name, this.price,
+      this.departureAirport, this.departureDate,
+      this.destinationAirport, this.destinationDate
+    )));
+    this._router.navigate(["caseui/" + this.trackingId]);
+  }
+
+  public cancleFlight() {
+    this._store.dispatch(new RequestSingleShipment(this.trackingId));
+    this._router.navigate(["caseui/" + this.trackingId]);
   }
 
   // ***************************************************
@@ -85,29 +107,21 @@ export class OrganizeFlightFormComponent implements OnInit, OnDestroy {
   }
 
   public onStartAirportSelected(airport: AirportResource) {
-
+    this.departureAirport = airport.iataCode;
     this.selectedStartAirport = airport;
   }
 
   public onDestinationAirportSelected(airport: AirportResource) {
-
+    this.destinationAirport = airport.iataCode;
     this.selectedDestinationAirport = airport;
   }
 
   // ***************************************************
   // Data Retrieval
   // ***************************************************
-  private loadShipment(trackingId: string) {
-    this._shipmentService.findShipmentbyId(trackingId).subscribe(
-      shipment => {
-        this._store.dispatch(new LoadShipmentAction(shipment));
-      }
-    );
-    console.log(trackingId);
-  }
 
-  private updateShipmentCaptureModel(shipmentCaptureSlice: ShipmentCaptureSlice) {
-    this.shipmentDetailInfoModel.shipment = shipmentCaptureSlice.shipment;
+  private updateShipmentCaptureModel(shipmentCaptureSlice: OrganizeFlightSlice) {
+    this.shipmentDetailInfoModel.flight = shipmentCaptureSlice.flight;
   }
 
 }

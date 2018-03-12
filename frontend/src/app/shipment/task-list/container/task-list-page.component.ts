@@ -69,9 +69,9 @@ export class TaskListPageComponent implements OnInit, OnDestroy {
       case "Complete shipment order":
         this._router.navigate(["caseui/" + task.trackingId + "/completeShipment"]);
         break;
-      case "Create invoice":
+      case "Organize Flight":
         this._store.dispatch(new RequestSingleShipment(task.trackingId));
-        this._router.navigate(["caseui/" + task.trackingId]);
+        this._router.navigate(["caseui/" + task.trackingId + "/organizeFlight"]);
         break;
       default:
         break;
