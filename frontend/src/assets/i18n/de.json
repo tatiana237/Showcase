@@ -79,5 +79,17 @@
   "TASK-RESOURCE_ASSIGNEE": "Zugewiesen an",
   "TASK-LIST-PAGE-COMPONENT-TITLE": "Alle Aufgaben",
   "ACTIVE-TASK-LIST-TITLE": "Aktive Aufgaben",
-  "ENABLED-TASK-LIST-TITLE": "Aktivierbare Aufgaben"
+  "ENABLED-TASK-LIST-TITLE": "Aktivierbare Aufgaben",
+  "FLIGHT-NUMBER" : "Flugnummer",
+  "AIRLINE": "Fluggesellschaft",
+  "AIRPORT": "Flughafen",
+  "FLIGHT-PRICE": "Flugpreis",
+  "CITY": "Stadt",
+  "DEPARTURE": "Start",
+  "DESTINATION": "Ziel",
+  "DATE": "Datum",
+  "TIME": "Uhrzeit",
+  "ORGANIZE-FLIGHT": "Flug Organisieren",
+  "SHIPMENT-DETAILS": "Transportinformationen",
+  "ACTIVATE-TASK":"Aktivieren"
 }

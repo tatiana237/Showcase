@@ -79,5 +79,17 @@
   "TASK-RESOURCE_ASSIGNEE": "Assigned to",
   "TASK-LIST-PAGE-COMPONENT-TITLE": "All tasks",
   "ACTIVE-TASK-LIST-TITLE": "Active Tasks",
-  "ENABLED-TASK-LIST-TITLE": "Enabled Tasks"
+  "ENABLED-TASK-LIST-TITLE": "Enabled Tasks",
+  "FLIGHT-NUMBER" : "Flight Number",
+  "AIRLINE": "Airline",
+  "AIRPORT": "Airport",
+  "FLIGHT-PRICE": "Flight Price",
+  "CITY": "City",
+  "DEPARTURE": "Departure",
+  "DESTINATION": "Destination",
+  "DATE": "Date",
+  "TIME": "Time",
+  "ORGANIZE-FLIGHT": "Organize Flight",
+  "SHIPMENT-DETAILS": "Shipment Details",
+  "ACTIVATE-TASK":"Activate"
 }
