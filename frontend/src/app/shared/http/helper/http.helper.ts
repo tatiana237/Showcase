@@ -24,7 +24,7 @@ export class HttpHelper {
      */
     public determineApiBaseUrlBasedOnFrontendUrl(location: Location): string {
         return location.host.includes("localhost") ?
-          location.protocol + "//localhost:8091/educama/v1/" :
+          location.protocol + "//localhost:" + (parseInt(location.port, 10) + 1) + "/educama/v1/" :
           location.protocol + "//" + location.host.replace("educama", "educama-api-gateway") + HttpHelper.BACKEND_RESOURCE_PATH;
     }
 }

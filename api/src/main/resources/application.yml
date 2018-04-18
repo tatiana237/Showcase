@@ -5,7 +5,7 @@ spring:
 
 # Tomcat Configuration
 server:
-  port: 8091
+  port: 8081
 
 # Default paths to services. Can be overwritten in manifests.
 educama:

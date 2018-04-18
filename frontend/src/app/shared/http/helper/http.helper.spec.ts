@@ -10,7 +10,7 @@ describe("HttpHelper", () => {
         location.protocol = "http:";
         location.host = "localhost";
         location.port = "8080";
-        expect(_httpHelper.determineApiBaseUrlBasedOnFrontendUrl(location)).toEqual("http://localhost:8091/educama/v1/");
+        expect(_httpHelper.determineApiBaseUrlBasedOnFrontendUrl(location)).toEqual("http://localhost:8081/educama/v1/");
     });
     it("Generates REST Api Url for localhost with Port 8090", () => {
         const location: Location = new MockLocation();
