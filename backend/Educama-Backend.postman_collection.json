@@ -1,14 +1,13 @@
 {
 	"info": {
+		"_postman_id": "b5a89227-3bc7-45a8-9323-1c63a3c11390",
 		"name": "Educama-Backend",
-		"_postman_id": "05d8fbec-bb61-5b66-6576-cbf3a5eae564",
-		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Customers",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Create Customer",
@@ -36,8 +35,7 @@
 								"v1",
 								"customers"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -67,8 +65,7 @@
 								"v1",
 								"customers"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -99,8 +96,7 @@
 								"customers",
 								"2409fade-222b-401a-9594-f30873b7f229"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -114,7 +110,10 @@
 								"value": "application/json"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:8091/educama/v1/customers/f4ed6c6e-4e72-4568-a964-276bfb2fcfeb",
 							"protocol": "http",
@@ -128,8 +127,7 @@
 								"customers",
 								"f4ed6c6e-4e72-4568-a964-276bfb2fcfeb"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -143,7 +141,10 @@
 								"value": "application/json"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:8091/educama/v1/customers/d92b5280-738e-4363-bb5a-4b7d1954ba53",
 							"protocol": "http",
@@ -157,8 +158,7 @@
 								"customers",
 								"d92b5280-738e-4363-bb5a-4b7d1954ba53"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -172,7 +172,10 @@
 								"value": "application/json"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:8091/educama/v1/customers",
 							"protocol": "http",
@@ -185,8 +188,7 @@
 								"v1",
 								"customers"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -216,8 +218,7 @@
 								"v1",
 								"customers"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -231,7 +232,10 @@
 								"value": "application/json"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:8091/educama/v1/customers/suggestions?term=p",
 							"protocol": "http",
@@ -251,8 +255,7 @@
 									"value": "p"
 								}
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				}
@@ -260,7 +263,7 @@
 		},
 		{
 			"name": "Shipments",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Create Shipment",
@@ -288,8 +291,7 @@
 								"v1",
 								"shipments"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -319,8 +321,7 @@
 								"v1",
 								"shipments"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -336,24 +337,23 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"invoiceNumber\": \"sadaadfgasdfhgadrg\"\n}"
+							"raw": "  {\r\n  \r\n  \"invoiceCreationDate\":\"1995-10-23T10:12:35Z\",\r\n  \"preCarriage\":131.2,\r\n  \"exportInsurance\":1231.1,\r\n  \"exportCustomsClearance\":1231.1,\r\n  \"flightPrice\":100.0,\r\n  \"importInsurance\":1231.1,\r\n  \"importCustomsClearance\":11.1,\r\n  \"onCarriage\":100.0,\r\n  \"managementFee\":131.0,\r\n  \"serviceFee\":100.0,\r\n  \"discount\":12.1\r\n  \r\n  }"
 						},
 						"url": {
-							"raw": "http://localhost:8091/educama/v1/shipments/invoice/dc7da781-cebb-44ba-ba87-93e36062aba3",
+							"raw": "http://localhost:8081/educama/v1/shipments/invoice/1a03e950-bdb7-46cd-9fa3-edb154de54f3",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8091",
+							"port": "8081",
 							"path": [
 								"educama",
 								"v1",
 								"shipments",
 								"invoice",
-								"dc7da781-cebb-44ba-ba87-93e36062aba3"
+								"1a03e950-bdb7-46cd-9fa3-edb154de54f3"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				}
@@ -361,7 +361,7 @@
 		},
 		{
 			"name": "Tasks",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "List All Tasks",
@@ -373,7 +373,10 @@
 								"value": "application/json"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:8091/educama/v1/tasks",
 							"protocol": "http",
@@ -386,8 +389,7 @@
 								"v1",
 								"tasks"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -396,7 +398,10 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:8091/educama/v1/tasks/completed/f086e52f-817b-455b-ac70-bfd6e78d4ac7",
 							"protocol": "http",

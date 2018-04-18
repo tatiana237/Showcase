@@ -1,7 +1,7 @@
 create table invoice (id bigint not null auto_increment,
   invoice_number varchar(255) not null,
   shipment_id bigint not null,
-  invoice_creation_date varchar(255) not null,
+  invoice_creation_date TIMESTAMP not null,
   pre_carriage double not null,
   export_insurance double not null,
   export_customs_clearance double not null,
