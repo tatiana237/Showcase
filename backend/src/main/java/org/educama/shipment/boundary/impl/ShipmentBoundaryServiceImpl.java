@@ -9,6 +9,7 @@ import org.educama.shipment.control.ShipmentCaseControlService;
 import org.educama.shipment.model.Flight;
 import org.educama.shipment.model.Invoice;
 import org.educama.shipment.model.Shipment;
+import org.educama.enums.Status;
 import org.educama.shipment.process.ShipmentCaseEvaluator;
 import org.educama.shipment.process.tasks.CompleteShipmentOrderTask;
 import org.educama.shipment.process.tasks.CreateInvoiceTask;
@@ -42,6 +43,7 @@ public class ShipmentBoundaryServiceImpl implements ShipmentBoundaryService {
     private ShipmentCaseControlService shipmentCaseControlService;
 
     private ShipmentCaseEvaluator shipmentCaseEvaluator;
+    public Status status;
 
     @Autowired
     public ShipmentBoundaryServiceImpl(CompleteShipmentOrderTask completeShipmentOrderTask,
@@ -64,6 +66,7 @@ public class ShipmentBoundaryServiceImpl implements ShipmentBoundaryService {
     @Override
     public Shipment createShipment(Shipment shipment) {
         shipment.trackingId = UUID.randomUUID().toString();
+        shipment.statusEnum = status;
         Shipment createdShipment = shipmentRepository.saveAndFlush(shipment);
         shipmentCaseControlService.create(shipment.trackingId);
         return createdShipment;
