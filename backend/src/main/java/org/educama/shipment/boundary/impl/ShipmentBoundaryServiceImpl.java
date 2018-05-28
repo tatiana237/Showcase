@@ -126,8 +126,7 @@ public class ShipmentBoundaryServiceImpl implements ShipmentBoundaryService {
 
             shipment = shipmentRepository.saveAndFlush(shipment);
 
-            if (completeShipmentOrderTask.isActive(trackingId) && completeShipmentOrderTask.canBeCompleted(trackingId))
-            {
+            if (completeShipmentOrderTask.isActive(trackingId) && completeShipmentOrderTask.canBeCompleted(trackingId)) {
                 shipment.statusEnum = Status.SHIPMENT_ORDER_COMPLETED;
                 completeShipmentOrderTask.complete(trackingId);
 
