@@ -123,12 +123,16 @@ public class ShipmentBoundaryServiceImpl implements ShipmentBoundaryService {
             shipment.sender = saveShipmentResource.sender;
             shipment.shipmentCargo = saveShipmentResource.shipmentCargo;
             shipment.shipmentServices = saveShipmentResource.shipmentServices;
-            shipment.statusEnum = saveShipmentResource.statusEnum;
+
             shipment = shipmentRepository.saveAndFlush(shipment);
 
-            if (completeShipmentOrderTask.isActive(trackingId) && completeShipmentOrderTask.canBeCompleted(trackingId)) {
+            if (completeShipmentOrderTask.isActive(trackingId) && completeShipmentOrderTask.canBeCompleted(trackingId))
+            {
+                shipment.statusEnum = Status.SHIPMENT_ORDER_COMPLETED;
                 completeShipmentOrderTask.complete(trackingId);
+
                 shipmentCaseEvaluator.reevaluateCase(trackingId);
+
             }
 
             ShipmentResource convertedShipment = new ShipmentResource().fromShipment(shipment);
