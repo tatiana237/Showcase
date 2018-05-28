@@ -43,7 +43,7 @@ public class ShipmentBoundaryServiceImpl implements ShipmentBoundaryService {
     private ShipmentCaseControlService shipmentCaseControlService;
 
     private ShipmentCaseEvaluator shipmentCaseEvaluator;
-    public Status status;
+
 
     @Autowired
     public ShipmentBoundaryServiceImpl(CompleteShipmentOrderTask completeShipmentOrderTask,
@@ -66,7 +66,7 @@ public class ShipmentBoundaryServiceImpl implements ShipmentBoundaryService {
     @Override
     public Shipment createShipment(Shipment shipment) {
         shipment.trackingId = UUID.randomUUID().toString();
-        shipment.statusEnum = status;
+        shipment.statusEnum = Status.SHIPMENT_ORDER_INCOMPLETE;
         Shipment createdShipment = shipmentRepository.saveAndFlush(shipment);
         shipmentCaseControlService.create(shipment.trackingId);
         return createdShipment;
